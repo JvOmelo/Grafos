@@ -29,7 +29,7 @@ contq = 0
 contm = 0
 for c in range(quantV):
     if Arestas[contq] == "S":
-        matriz[c][0] = 11
+        matriz[c][0] = 1
     for g in range(quantV-1):
         contq+=1
         contm+=1
@@ -52,7 +52,7 @@ while True:
 
     print("1 - AdicionarVertice \n2 - RemoverVertice \n3 - AdicionarAresta")
     print("4 - removerAresta \n5 - Ver o Grafo \n6 - Busca em profundidade")
-    print("7 - Busca de articulações")
+    print("7 - Busca de articulações \n8 - Ordenação Topologica")
 
     x = input("\nDigite o número que indica a operação que desejas.\n")
 
@@ -70,5 +70,7 @@ while True:
         Util.busca_em_profundidade()
     elif x == "7":
         Util.Pontos_Articulacao()
+    elif x == "8":
+        Util.ordenacao_topologica()
     else:
         exit()
