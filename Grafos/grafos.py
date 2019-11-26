@@ -1,6 +1,9 @@
+import sys
+import Util
+
+quantV = 0
 Vertices = []
 Arestas = []
-quantV = 0
 
 quantV = int(input("Quantos vértices existem no grafo?: "))
 for i in range(quantV):
@@ -26,7 +29,7 @@ contq = 0
 contm = 0
 for c in range(quantV):
     if Arestas[contq] == "S":
-        matriz[c][0] = 1
+        matriz[c][0] = 11
     for g in range(quantV-1):
         contq+=1
         contm+=1
@@ -37,3 +40,35 @@ for c in range(quantV):
 print("MATRIZ DE ADJACENCIA:")
 for t in range(quantV):
     print(matriz[t])
+
+#Digite apenas "S" para sim, ou "N" para não!!
+si = input(("Gostaria de utilizar a busca de articulação?\n").upper())
+if si == "S" or si == "s":
+    print("Insira um grafo não orientado e conexo para a busca de articulação!")
+else:
+    sys.exit()
+
+while True:
+
+    print("1 - AdicionarVertice \n2 - RemoverVertice \n3 - AdicionarAresta")
+    print("4 - removerAresta \n5 - Ver o Grafo \n6 - Busca em profundidade")
+    print("7 - Busca de articulações")
+
+    x = input("\nDigite o número que indica a operação que desejas.\n")
+
+    if x == "1":
+        Util.adicionarVertice()
+    elif x == "2":
+        Util.removerVertice()
+    elif x == "3":
+        Util.adicionarAresta()
+    elif x == "4":
+        Util.removerAresta()
+    elif x == "5":
+        print(Util.grafoDicio)
+    elif x == "6":
+        Util.busca_em_profundidade()
+    elif x == "7":
+        Util.Pontos_Articulacao()
+    else:
+        exit()
