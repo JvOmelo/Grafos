@@ -1,5 +1,5 @@
 from GrafoUtil import buscaDFS as dfs
-import Algoritmos
+import Busca_articulacao
 
 grafoDicio = dict()
 
@@ -23,21 +23,9 @@ def removerVertice():
 
     grafoDicio.pop(verticeParaRemover, None)
 
-    for i in grafoDicio:
-        listaDeArestasVerticeX = list(grafoDicio[i])
-        cont = 0
-        while cont < len(listaDeArestasVerticeX):
-            if listaDeArestasVerticeX[cont] == verticeParaRemover:
-                del listaDeArestasVerticeX[cont]
-                del listaDeArestasVerticeX[cont]
-                break
-            cont += 1
-
-        grafoDicio[i] = "".join(listaDeArestasVerticeX)
-
     return grafoDicio
 
-g1 = Algoritmos.Graph(len(grafoDicio))
+g1 = Busca_articulacao.Graph(len(grafoDicio))
 def adicionarAresta():
     global grafoDicio
 
@@ -55,8 +43,10 @@ def adicionarAresta():
 
     if v not in grafoDicio[verticeE]:
         grafoDicio[verticeE] = grafoDicio[verticeE] + str(v) + " "
+        print(grafoDicio)
     else:
         print("\nEssa aresta já existe!")
+
 
     return grafoDicio
 
@@ -65,8 +55,26 @@ def Pontos_Articulacao():
     return g1.AP()
 
 
-def removerAresta():
+def ordenacao_topologica():
 
+    global grafoDicio
+
+    VOrdenacao = input("\nDigite o vértice com grau de entrada nulo para iniciar a busca da ordenação topologica.\n")
+
+    while VOrdenacao not in grafoDicio:
+        print("Esse vértice não existe.")
+        VOrdenacao = input("\nDigite o vértice para iniciar a busca da ordenação topologica.\n")
+
+    origemVisitado, origemSubgrafo = dfs(grafoDicio, VOrdenacao, [], [], None)
+    print(origemVisitado, origemSubgrafo)
+    lista = []
+    for i in range(len(origemVisitado)):
+        lista.append([origemVisitado[i]])
+        grafoDicio.pop(origemVisitado[i], None)
+    print(lista)
+    return grafoDicio
+
+def removerAresta():
 
     global grafoDicio
 
