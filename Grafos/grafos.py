@@ -42,7 +42,7 @@ for t in range(quantV):
     print(matriz[t])
 
 #Digite apenas "S" para sim, ou "N" para não!!
-si = input(("Gostaria de utilizar a busca de articulação?\n").upper())
+si = input(("Gostaria de utilizar a busca de articulação/Ordenação topologica/Fortemente conexo?\n").upper())
 if si == "S" or si == "s":
     print("Insira um grafo não orientado e conexo para a busca de articulação!")
 else:
