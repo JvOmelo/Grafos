@@ -2,7 +2,9 @@ from GrafoUtil import buscaDFS as dfs
 import Busca_articulacao
 
 grafoDicio = dict()
-
+contGraph = 0
+listVerticeE = []
+listV = []
 def adicionarVertice():
     global grafoDicio
     #EVITE USAR "V" NA FRENTE DO NOME DO VERTICE!!
@@ -25,10 +27,12 @@ def removerVertice():
 
     return grafoDicio
 
-g1 = Busca_articulacao.Graph(len(grafoDicio))
 def adicionarAresta():
     global grafoDicio
-
+    global contGraph
+    global listVerticeE
+    global listV
+    contGraph += 1
     verticeE = input("\nPara qual vértice você deseja adicionar uma aresta?\n")
 
     while verticeE not in grafoDicio:
@@ -36,7 +40,7 @@ def adicionarAresta():
         verticeE = input("\nPara qual vértice você deseja adicionar uma aresta?\n")
 
     v = input("\nDigite o vértice ao qual este vértice está ligado.\n")
-    g1.addEdge(verticeE, v)
+
     while v not in grafoDicio:
         print("\nEsse vértice inexiste.")
         v = input("\nDigite o vértice ao qual este vértice está ligado.\n")
@@ -46,13 +50,21 @@ def adicionarAresta():
         print(grafoDicio)
     else:
         print("\nEssa aresta já existe!")
-
+    listVerticeE.append(verticeE)
+    listV.append(v)
 
     return grafoDicio
 
 
 def Pontos_Articulacao():
-    return g1.AP()
+    global contGraph
+    global listVerticeE
+    global listV
+
+    g = Busca_articulacao.Graph(contGraph)
+    for i in range(contGraph):
+        g.addEdge(listVerticeE[i], listV[i])
+    g.AP()
 
 
 def ordenacao_topologica():
