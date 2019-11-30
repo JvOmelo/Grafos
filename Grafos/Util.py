@@ -1,6 +1,6 @@
 from GrafoUtil import buscaDFS as dfs
-import Busca_articulacao
-
+import Busca_Articulacao
+import sys
 grafoDicio = dict()
 contGraph = 0
 listVerticeE = []
@@ -61,7 +61,7 @@ def Pontos_Articulacao():
     global listVerticeE
     global listV
 
-    g = Busca_articulacao.Graph(contGraph)
+    g = Busca_Articulacao.Graph(contGraph)
     for i in range(contGraph):
         g.addEdge(listVerticeE[i], listV[i])
     g.AP()
@@ -85,6 +85,19 @@ def ordenacao_topologica():
         grafoDicio.pop(origemVisitado[i], None)
     print(lista)
     return grafoDicio
+
+def arvore_geradora():
+
+    global grafoDicio
+    arvore = []
+    dfs = []
+    dfs = dfs(grafoDicio, grafoDicio[0], [], [], None)
+    while True:
+        if dfs in grafoDicio:
+            arvore.append(dfs)
+    else:
+        exit()
+    return arvore
 
 def removerAresta():
 

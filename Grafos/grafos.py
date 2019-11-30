@@ -52,7 +52,7 @@ while True:
 
     print("1 - AdicionarVertice \n2 - RemoverVertice \n3 - AdicionarAresta")
     print("4 - removerAresta \n5 - Ver o Grafo \n6 - Busca em profundidade")
-    print("7 - Busca de articulações \n8 - Ordenação Topologica")
+    print("7 - Busca de articulações \n8 - Ordenação Topologica \n9 - Arvore Geradora")
 
     x = input("\nDigite o número que indica a operação que desejas.\n")
 
@@ -72,5 +72,7 @@ while True:
         Util.Pontos_Articulacao()
     elif x == "8":
         Util.ordenacao_topologica()
+    elif x == "9":
+        Util.arvore_geradora()
     else:
         exit()
